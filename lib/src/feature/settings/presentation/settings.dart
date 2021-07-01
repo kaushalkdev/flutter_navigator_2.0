@@ -16,18 +16,19 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            child: Text("Settings"),
-          ),
-          ElevatedButton(
-            onPressed: () => widget.onTap!("Details"),
-            child: Text("Detials"),
-          )
-        ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              child: Text("Settings"),
+            ),
+            ElevatedButton(
+              onPressed: () => widget.onTap!("Details"),
+              child: Text("Detials"),
+            )
+          ],
+        ),
       ),
     );
   }
