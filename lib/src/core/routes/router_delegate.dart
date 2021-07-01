@@ -14,10 +14,20 @@ class AppRouteDetegate extends RouterDelegate
     return Navigator(
       key: _navigatorKey,
       pages: [
-        MaterialPage(child: HomePage(onTap: _handleRouting)),
+        MaterialPage(
+          key: ValueKey('Home'),
+          child: HomePage(onTap: _handleRouting),
+        ),
         if (isSettingsPage!)
-          MaterialPage(child: SettingsPage(onTap: _handleRouting)),
-        if (isDetailPage!) MaterialPage(child: DetailsPage()),
+          MaterialPage(
+            key: ValueKey('Settings'),
+            child: SettingsPage(onTap: _handleRouting),
+          ),
+        if (isDetailPage!)
+          MaterialPage(
+            key: ValueKey('Detials'),
+            child: DetailsPage(),
+          ),
       ],
       onPopPage: (route, result) {
         print(page);
@@ -26,7 +36,6 @@ class AppRouteDetegate extends RouterDelegate
           isSettingsPage = false;
         }
         if (page == 'Details') {
-          isSettingsPage = true;
           isDetailPage = false;
           page = 'Settings';
         }
@@ -48,14 +57,12 @@ class AppRouteDetegate extends RouterDelegate
 
   void _handleRouting(String? value) {
     if (value == 'Settings') {
-      page = value;
       isSettingsPage = true;
     }
     if (value == 'Details') {
-      page = value;
       isDetailPage = true;
-      isSettingsPage = false;
     }
+    page = value;
     notifyListeners();
   }
 }
