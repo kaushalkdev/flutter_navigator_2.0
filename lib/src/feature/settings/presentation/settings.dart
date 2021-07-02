@@ -1,10 +1,11 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:test_navigation/src/core/routes/bloc/route_bloc_bloc.dart';
+
 import '../../../exports.dart';
 
 class SettingsPage extends StatefulWidget {
-  final ValueChanged<String>? onTap;
   const SettingsPage({
     Key? key,
-    @required this.onTap,
   }) : super(key: key);
 
   @override
@@ -24,7 +25,9 @@ class _SettingsPageState extends State<SettingsPage> {
               child: Text("Settings"),
             ),
             ElevatedButton(
-              onPressed: () => widget.onTap!("Details"),
+              onPressed: () {
+                BlocProvider.of<RouteBlocBloc>(context).add(DetialEvent());
+              },
               child: Text("Detials"),
             )
           ],
