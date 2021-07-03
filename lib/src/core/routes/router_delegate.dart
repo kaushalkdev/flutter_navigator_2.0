@@ -20,7 +20,7 @@ class AppRouteDetegate extends RouterDelegate
               key: ValueKey('Home'),
               child: HomePage(),
             ),
-            if (state is SettingsState)
+            if (state is SettingsState || state is DetailState)
               MaterialPage(
                 key: ValueKey('Settings'),
                 child: SettingsPage(),
